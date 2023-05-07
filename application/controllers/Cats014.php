@@ -6,13 +6,29 @@ class Cats014 extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
+		if (!$this->session->userdata('username')) {
+			redirect('Auth014/login');
+		}
+
 		$this->load->model('Cats014_model');
 		$this->load->model('Categories014_model');
 	}
 
 	public function index()
 	{
-		$data['cats'] = $this->Cats014_model->read();
+		$this->load->library('pagination');
+
+		$config['base_url'] = site_url('cats014/index');
+		$config['total_rows'] = $this->db->count_all('cats014');
+		$config['per_page'] = 5;
+
+		$this->pagination->initialize($config);
+
+		$limit = $config['per_page'];
+		$start = $this->uri->segment(3) ? $this->uri->segment(3) : 0;
+
+		$data['i'] = $start + 1;
+		$data['cats'] = $this->Cats014_model->read($limit, $start);
 		$this->load->view('cats014/cat_list', $data);
 	}
 
@@ -99,6 +115,9 @@ class Cats014 extends CI_Controller
 
 	public function sales()
 	{
+		if ($this->session->userdata('usertype') != 'Manager')
+			redirect('Welcome');
+
 		$data['sales'] = $this->Cats014_model->sales();
 		$this->load->view('cats014/sale_list', $data);
 	}

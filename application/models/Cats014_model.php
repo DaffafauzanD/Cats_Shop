@@ -15,8 +15,9 @@ class Cats014_model extends CI_Model
 		$this->db->insert('cats014', $data);
 	}
 
-	public function read()
+	public function read($limit, $start)
 	{
+		$this->db->limit($limit, $start);
 		$query = $this->db->get('cats014');
 		return $query->result();
 	}

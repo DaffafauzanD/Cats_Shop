@@ -1,47 +1,32 @@
-<nav class="navbar navbar-expand-xl bg-body-tertiary">
-	<div class="container-fluid">
-		<a class="navbar-brand" href="<?= base_url() ?>">CATSHOP-D</a>
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-			aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-				<li class="nav-item">
-					<a class="nav-link" aria-current="page" href="<?= site_url(
-						'Cats014/add'
-					) ?>">Cat Add</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="<?= site_url(
-						'Cats014/index'
-					) ?>">Cat List</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="<?= site_url(
-						'categories014/add'
-					) ?>">Categories add</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="<?= site_url(
-						'categories014/index'
-					) ?>">Categories List</a>
-				</li>
-				<!-- <li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-						aria-expanded="false">
-						Dropdown
-					</a>
-					<ul class="dropdown-menu">
-						<li><a class="dropdown-item" href="#">Action</a></li>
-						<li><a class="dropdown-item" href="#">Another action</a></li>
-						<li>
-							<hr class="dropdown-divider">
-						</li>
-						<li><a class="dropdown-item" href="#">Something else here</a></li>
-					</ul>
-				</li> -->
-			</ul>
-		</div>
-	</div>
+<nav class="navbar navbar-expand-xl">
+    <div class="container-fluid justify-content-around">
+        <div>
+            <div class="dropdown">
+                <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Menu
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="<?= site_url('cats014') ?>">Cats list</a></li>
+                    <li><a class="dropdown-item" href="<?= site_url(
+							'Categories014'
+						) ?>">Categories list</a></li>
+                    <?php if ($this->session->userdata('usertype') == 'Manager') { ?>
+                    <li><a class="dropdown-item" href="<?= site_url('User014') ?>">User list</a></li>
+                    <li><a class="dropdown-item" href="<?= site_url('cats014/sales') ?>">Report</a></li>
+                    <?php } ?>
+                    <li><a class="dropdown-item" href="<?= site_url('Auth014/changepass') ?>">Change password</a>
+                    </li>
+                    <li><a class="dropdown-item" href="<?= site_url('Auth014/changephoto') ?>">Change photo</a></li>
+                    <li><a class="dropdown-item" href="<?= site_url('Auth014/logout') ?>">logout</a></li>
+                </ul>
+            </div>
+        </div>
+        <div>
+            <a class="navbar-brand" href="<?= base_url() ?>">CATSHOP014</a>
+        </div>
+        <div>
+            <a style="text-transform: capitalize;" class="navbar-brand"
+                href="<?= base_url() ?>"><?= $this->session->userdata('username') ?>.</a>
+        </div>
+    </div>
 </nav>

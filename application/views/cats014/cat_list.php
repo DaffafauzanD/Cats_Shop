@@ -1,6 +1,4 @@
 <?php
-
-
 defined('BASEPATH') or exit('No direct script access allowed');
 $this->load->view('cats014/head');
 $this->load->view('cats014/navbar');
@@ -26,10 +24,9 @@ $this->load->view('cats014/navbar');
 					<th>Gender</th>
 					<th>Age(month)</th>
 					<th>Price($)</th>
-					<th colspan="3" class="text-center">Action</th>
+					<th colspan="3" class="text-start">Action</th>
 				</tr>
 				<?php
-				$i = 1;
 				foreach ($cats as $cat) { ?>
 					<tr>
 						<td>
@@ -50,6 +47,7 @@ $this->load->view('cats014/navbar');
 						<td>
 							<?= $cat->price_014 ?>
 						</td>
+
 						<td><a href="<?= site_url(
 							'Cats014/edit/' . $cat->id_014
 						) ?>" class="btn btn-primary">Edit</a>
@@ -63,34 +61,17 @@ $this->load->view('cats014/navbar');
 								) ?>" class="btn btn-primary">Sale</a>
 							<?php } ?>
 						</td>
-						<td>
-							<button type="button" class="btn btn-primary" data-bs-toggle="modal"
-								data-bs-target="#exampleModal"> Delete
-							</button>
+						<td><a href="<?= site_url(
+							'Cats014/delete/' . $cat->id_014
+						) ?>" class="btn btn-primary">Delete</a>
 						</td>
 					</tr>
 				<?php }
 				?>
 			</table>
+			<?= $this->pagination->create_links(); ?>
 		</div>
-		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog modal-dialog-centered">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h1 class="modal-title fs-5" id="exampleModalLabel">Delete</h1>
-						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-					</div>
-					<div class="modal-body">
-						Are you sure?
-					</div>
-					<div class="modal-footer">
-						<a href="<?= site_url(
-							'Cats014/delete/' . $cat->id_014
-						) ?>" class="btn btn-danger">Yes!</a>
-						<button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel</button>
-					</div>
-				</div>
-			</div>
-		</div>
+
+
 	</body>
 </div>

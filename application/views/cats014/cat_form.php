@@ -41,11 +41,11 @@ $this->load->view('cats014/navbar');
 					<option value="" selected>Choose type</option>
 
 					<?php foreach ($categories as $cate) { ?>
-						<option value="<?= $cate->cate_name_014 ?>" <?= set_select(
-						  	'type_014',
-						  	$cate->cate_name_014,
-						  	$type == $cate->cate_name_014 ? true : false
-						  ) ?>><?= $cate->cate_name_014 ?></option>
+					   <option value="<?= $cate->cate_name_014 ?>" <?= set_select(
+						 	'type_014',
+						 	$cate->cate_name_014,
+						 	$type == $cate->cate_name_014 ? true : false
+						 ) ?>><?= $cate->cate_name_014 ?></option>
 					<?php } ?>
 
 					<!-- <option value="Domestic" <?= set_select(
@@ -66,14 +66,14 @@ $this->load->view('cats014/navbar');
 				<legend class="col-form-label col-sm-2 pt-0">Gender</legend>
 				<div class="form-check">
 					<input class="form-check-input" type="radio" name="gender_014" id="gridRadios1" value="Female"
-						<?= $gender == 'Female' ? 'checked' : '' ?>>
+					 <?= $gender == 'Female' ? 'checked' : '' ?>>
 					<label class="form-check-label" for="gridRadios1">
 						Female
 					</label>
 				</div>
 				<div class="form-check">
 					<input class="form-check-input" type="radio" name="gender_014" id="gridRadios2" value="Male"
-						<?= $gender == 'Male' ? 'checked' : '' ?>>
+					 <?= $gender == 'Male' ? 'checked' : '' ?>>
 					<label class="form-check-label" for="gridRadios2">
 						Male
 					</label>
